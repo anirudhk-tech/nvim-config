@@ -281,21 +281,22 @@ require("lazy").setup({
   { "windwp/nvim-autopairs",                     config = true },
   { "MeanderingProgrammer/render-markdown.nvim", dependencies = { "nvim-treesitter/nvim-treesitter" }, opts = {} },
 
-  -- Treesitter
-  {
-    "nvim-treesitter/nvim-treesitter",
-    build = ":TSUpdate",
-    config = function()
-      require("nvim-treesitter").setup({
-        ensure_installed = {
-          -- Web Development
-          "typescript",
-          "javascript",
-          "html",
-          "css",
-          "json",
-          "prisma",
-          "graphql",
+	-- Treesitter
+   {
+	"nvim-treesitter/nvim-treesitter",
+	build = ":TSUpdate",
+	config = function()
+	require("nvim-treesitter.configs").setup({
+		ensure_installed = {
+	 -- App Development
+	"typescript",
+	"javascript",
+	"html",
+	"css",
+	"json",
+	"prisma",
+	"graphql",
+	"kotlin",
 
           -- Neovim & Config
           "lua",
