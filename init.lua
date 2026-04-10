@@ -191,8 +191,6 @@ require("lazy").setup({
 			require("onedark").load()
 		end,
 	},
-
-<<<<<<< HEAD
   -- Core Navigation & UI
   {
     'nvim-lualine/lualine.nvim',
