@@ -191,94 +191,96 @@ require("lazy").setup({
 			require("onedark").load()
 		end,
 	},
-  -- Core Navigation & UI
-  {
-    'nvim-lualine/lualine.nvim',
-    dependencies = { 'nvim-tree/nvim-web-devicons' },
-    config = function()
-      require('lualine').setup {
-        options = {
-          icons_enabled = true,
-          theme = 'molokai',
-          component_separators = { left = '', right = '' },
-          section_separators = { left = '', right = '' },
-          disabled_filetypes = {
-            statusline = {},
-            winbar = {},
-          },
-          ignore_focus = {},
-          always_divide_middle = true,
-          always_show_tabline = true,
-          globalstatus = false,
-          refresh = {
-            statusline = 1000,
-            tabline = 1000,
-            winbar = 1000,
-            refresh_time = 16, -- ~60fps
-            events = {
-              'WinEnter',
-              'BufEnter',
-              'BufWritePost',
-              'SessionLoadPost',
-              'FileChangedShellPost',
-              'VimResized',
-              'Filetype',
-              'CursorMoved',
-              'CursorMovedI',
-              'ModeChanged',
-            },
-          }
-        },
-        sections = {
-          lualine_a = { 'mode' },
-          lualine_b = { 'branch', 'diff', 'diagnostics' },
-          lualine_c = { 'filename' },
-          lualine_x = { 'encoding', 'fileformat', 'filetype' },
-          lualine_y = { 'progress' },
-          lualine_z = { 'location' }
-        },
-        inactive_sections = {
-          lualine_a = {},
-          lualine_b = {},
-          lualine_c = { 'filename' },
-          lualine_x = { 'location' },
-          lualine_y = {},
-          lualine_z = {}
-        },
-        tabline = {},
-        winbar = {},
-        inactive_winbar = {},
-        extensions = {}
-      }
-    end
-  },
-  {
-    'romgrk/barbar.nvim',
-    dependencies = {
-      'lewis6991/gitsigns.nvim',
-      'nvim-tree/nvim-web-devicons',
-    },
-    init = function() vim.g.barbar_auto_setup = false end,
-    opts = {
-      animation = true,
-    },
-  },
-  {
-    "nvim-tree/nvim-tree.lua",
-    dependencies = "nvim-tree/nvim-web-devicons",
-    opts = {
-      filters = {
-        dotfiles = false,    -- Shows .env, .gitignore, etc.
-        git_ignored = false, -- Shows files ignored by git
-      },
-      renderer = {
-        highlight_git = true, -- Makes the "grayed out" effect work
-      },
-    },
-  },
-  { "mg979/vim-visual-multi",                    branch = "master" },
-  { "windwp/nvim-autopairs",                     config = true },
-  { "MeanderingProgrammer/render-markdown.nvim", dependencies = { "nvim-treesitter/nvim-treesitter" }, opts = {} },
+	-- Core Navigation & UI
+	{
+		"nvim-lualine/lualine.nvim",
+		dependencies = { "nvim-tree/nvim-web-devicons" },
+		config = function()
+			require("lualine").setup({
+				options = {
+					icons_enabled = true,
+					theme = "everforest",
+					component_separators = { left = "", right = "" },
+					section_separators = { left = "", right = "" },
+					disabled_filetypes = {
+						statusline = {},
+						winbar = {},
+					},
+					ignore_focus = {},
+					always_divide_middle = true,
+					always_show_tabline = true,
+					globalstatus = false,
+					refresh = {
+						statusline = 1000,
+						tabline = 1000,
+						winbar = 1000,
+						refresh_time = 16, -- ~60fps
+						events = {
+							"WinEnter",
+							"BufEnter",
+							"BufWritePost",
+							"SessionLoadPost",
+							"FileChangedShellPost",
+							"VimResized",
+							"Filetype",
+							"CursorMoved",
+							"CursorMovedI",
+							"ModeChanged",
+						},
+					},
+				},
+				sections = {
+					lualine_a = { "mode" },
+					lualine_b = { "branch", "diff", "diagnostics" },
+					lualine_c = { "filename" },
+					lualine_x = { "encoding", "fileformat", "filetype" },
+					lualine_y = { "progress" },
+					lualine_z = { "location" },
+				},
+				inactive_sections = {
+					lualine_a = {},
+					lualine_b = {},
+					lualine_c = { "filename" },
+					lualine_x = { "location" },
+					lualine_y = {},
+					lualine_z = {},
+				},
+				tabline = {},
+				winbar = {},
+				inactive_winbar = {},
+				extensions = {},
+			})
+		end,
+	},
+	{
+		"romgrk/barbar.nvim",
+		dependencies = {
+			"lewis6991/gitsigns.nvim",
+			"nvim-tree/nvim-web-devicons",
+		},
+		init = function()
+			vim.g.barbar_auto_setup = false
+		end,
+		opts = {
+			animation = true,
+		},
+	},
+	{
+		"nvim-tree/nvim-tree.lua",
+		dependencies = "nvim-tree/nvim-web-devicons",
+		opts = {
+			filters = {
+				dotfiles = false, -- Shows .env, .gitignore, etc.
+				git_ignored = false, -- Shows files ignored by git
+			},
+			renderer = {
+				highlight_git = true, -- Makes the "grayed out" effect work
+			},
+		},
+	},
+	{ "mg979/vim-visual-multi", branch = "master" },
+	{ "windwp/nvim-autopairs", config = true },
+	{ "MeanderingProgrammer/render-markdown.nvim", dependencies = { "nvim-treesitter/nvim-treesitter" }, opts = {} },
 	-- Treesitter
 	{
 		"nvim-treesitter/nvim-treesitter",
@@ -375,6 +377,7 @@ require("lazy").setup({
 					"sql-formatter", -- SQL formatter
 					"prettier", -- Web formatter
 					"clang-format", -- C++ formatter
+					"ktlint", -- Kotlin linter
 				},
 			})
 		end,
@@ -445,6 +448,7 @@ require("lazy").setup({
 				css = { "prettier" },
 				html = { "prettier" },
 				json = { "prettier" },
+				kotlin = { "ktlint" },
 			},
 			format_on_save = { timeout_ms = 2500, lsp_fallback = true },
 		},
@@ -485,6 +489,7 @@ require("mason-lspconfig").setup({
 		"html", -- HTML
 		"cssls", -- CSS
 		"jsonls", -- JSON
+		"kotlin_language_server", -- Kotlin LSP
 
 		-- Backend & Systems
 		"gopls", -- Go
@@ -499,7 +504,8 @@ require("mason-lspconfig").setup({
 })
 
 -- Define the servers
-local servers = { "clangd", "pyright", "sqls", "lua_ls", "ts_ls", "tailwindcss", "eslint", "emmet_ls" }
+local servers =
+	{ "clangd", "pyright", "sqls", "lua_ls", "ts_ls", "tailwindcss", "eslint", "emmet_ls", "kotlin_language_server" }
 
 -- Modern way to enable LSPs without the deprecated 'require'
 for _, server in ipairs(servers) do
